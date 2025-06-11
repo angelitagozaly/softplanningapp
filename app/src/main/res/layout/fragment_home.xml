@@ -96,14 +96,14 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_add_note"
                     android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_height="120dp"
+                    android:layout_marginEnd="12dp"
                     android:layout_weight="1"
                     android:clickable="true"
                     android:focusable="true"
                     app:cardBackgroundColor="@color/cardBackground"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="3dp"
                     app:rippleColor="@color/rippleColor">
 
                     <LinearLayout
@@ -111,7 +111,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="8dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -125,25 +125,33 @@
                             android:layout_marginTop="8dp"
                             android:text="Add Note"
                             android:textColor="@color/textPrimary"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Create new idea or activity"
+                            android:textColor="@color/textSecondary"
+                            android:textSize="12sp"
+                            android:gravity="center" />
 
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_view_notes"
+                    android:id="@+id/card_add_location"
                     android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="12dp"
                     android:layout_weight="1"
                     android:clickable="true"
                     android:focusable="true"
                     app:cardBackgroundColor="@color/cardBackground"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="3dp"
                     app:rippleColor="@color/rippleColor">
 
                     <LinearLayout
@@ -151,46 +159,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="📝"
-                            android:textSize="24sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="My Notes"
-                            android:textColor="@color/textPrimary"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_locations"
-                    android:layout_width="0dp"
-                    android:layout_height="100dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_weight="1"
-                    android:clickable="true"
-                    android:focusable="true"
-                    app:cardBackgroundColor="@color/cardBackground"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp"
-                    app:rippleColor="@color/rippleColor">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
+                        android:padding="8dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -202,10 +171,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:text="Locations"
+                            android:text="Add Location"
                             android:textColor="@color/textPrimary"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
                             android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Save places for reminders"
+                            android:textColor="@color/textSecondary"
+                            android:textSize="12sp"
+                            android:gravity="center" />
 
                     </LinearLayout>
 
@@ -214,14 +192,32 @@
             </LinearLayout>
 
             <!-- Recent Notes Section -->
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:text="Recent Notes"
-                android:textColor="@color/textPrimary"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Recent Notes"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_view_all_notes"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View All"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/text_no_notes"
@@ -229,7 +225,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:gravity="center"
-                android:text="No notes yet.\nTap the + button to create your first note!"
+                android:text="No notes yet.\nTap 'Add Note' above to create your first note!"
                 android:textColor="@color/textMuted"
                 android:textSize="16sp"
                 android:visibility="gone" />
@@ -245,16 +241,5 @@
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
-
-    <!-- Floating Action Button -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_add_note"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_add_24"
-        app:backgroundTint="@color/fabBackground"
-        app:tint="@color/fabIcon" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

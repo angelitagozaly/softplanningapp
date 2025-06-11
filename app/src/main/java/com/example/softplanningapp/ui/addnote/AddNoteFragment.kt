@@ -91,8 +91,8 @@ class AddNoteFragment : Fragment() {
             if (success) {
                 // Show success message
                 Toast.makeText(context, "Note saved successfully!", Toast.LENGTH_SHORT).show()
-                // Navigate back to home
-                findNavController().navigate(R.id.action_addNote_to_home)
+                // Navigate to notes list instead of home
+                findNavController().navigate(R.id.action_addNote_to_notes)
             } else {
                 Toast.makeText(context, "Error saving note", Toast.LENGTH_SHORT).show()
             }

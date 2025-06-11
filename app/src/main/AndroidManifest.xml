@@ -23,6 +23,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SoftPlanningApp"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
         <!-- Google Maps API Key -->
@@ -30,9 +31,21 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDCn4UQKzRKHtuf2xBp4U5EHaoqj91Fkh8" />
 
+        <!-- Google Play Services Version -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!-- Enable hardware acceleration -->
+        <meta-data
+            android:name="android.hardware.vulkan.level"
+            android:value="0" />
+
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

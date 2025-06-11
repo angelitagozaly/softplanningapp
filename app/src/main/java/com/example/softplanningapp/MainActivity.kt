@@ -12,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private var isUpdatingBottomNav = false // Flag to prevent infinite loop
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,9 +23,57 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        // Set up bottom navigation
+        // Set up bottom navigation with custom behavior
         val bottomNavView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavView.setupWithNavController(navController)
+
+        // Custom bottom navigation setup to clear back stack
+        bottomNavView.setOnItemSelectedListener { item ->
+            // Prevent infinite loop when we're updating programmatically
+            if (isUpdatingBottomNav) {
+                return@setOnItemSelectedListener true
+            }
+
+            when (item.itemId) {
+                R.id.homeFragment -> {
+                    // Clear back stack and navigate to home
+                    navController.popBackStack(R.id.homeFragment, false)
+                    true
+                }
+                R.id.notesFragment -> {
+                    // Clear back stack and navigate to notes
+                    navController.popBackStack(R.id.homeFragment, false)
+                    navController.navigate(R.id.notesFragment)
+                    true
+                }
+                R.id.locationsFragment -> {
+                    // Clear back stack and navigate to locations
+                    navController.popBackStack(R.id.homeFragment, false)
+                    navController.navigate(R.id.locationsFragment)
+                    true
+                }
+                else -> false
+            }
+        }
+
+        // Listen for destination changes to update bottom navigation selection
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            isUpdatingBottomNav = true // Set flag to prevent loop
+
+            when (destination.id) {
+                R.id.homeFragment -> {
+                    bottomNavView.selectedItemId = R.id.homeFragment
+                }
+                R.id.notesFragment -> {
+                    bottomNavView.selectedItemId = R.id.notesFragment
+                }
+                R.id.locationsFragment -> {
+                    bottomNavView.selectedItemId = R.id.locationsFragment
+                }
+                // For other destinations (AddNote, EditNote, AddLocation), don't change selection
+            }
+
+            isUpdatingBottomNav = false // Clear flag
+        }
 
         // Set up action bar
         appBarConfiguration = AppBarConfiguration(
@@ -35,6 +84,9 @@ class MainActivity : AppCompatActivity() {
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        // Handle notification intent
+        handleNotificationIntent()
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -42,5 +94,15 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    private fun handleNotificationIntent() {
+        val fromNotification = intent.getBooleanExtra("from_notification", false)
+        val noteId = intent.getLongExtra("note_id", -1L)
+
+        if (fromNotification && noteId != -1L) {
+            // Navigate to the specific note when coming from notification
+            // This will be implemented when we add geofencing
+        }
     }
 }

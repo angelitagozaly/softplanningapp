@@ -5,28 +5,190 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/windowBackground"
-    tools:context=".ui.locations.AddLocationFragment">
+    tools:context=".ui.addlocation.AddLocationFragment">
 
-    <!-- Map Container -->
+    <!-- Main Content -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- Map Fragment -->
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/map_fragment"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
+        <!-- Map Container - Give it more height -->
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_weight="2">
 
-        <!-- Control Panel -->
-        <androidx.core.widget.NestedScrollView
+            <!-- Full Map Fragment -->
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/map_fragment"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <!-- Compact Search Overlay - Positioned at top -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_search_overlay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:layout_gravity="top"
+                android:elevation="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/cardBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <!-- Compact Search Input -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/text_input_search"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="8dp"
+                            android:hint="Search places..."
+                            app:endIconMode="clear_text"
+                            app:startIconDrawable="@drawable/ic_search_24"
+                            app:boxCornerRadiusTopStart="12dp"
+                            app:boxCornerRadiusTopEnd="12dp"
+                            app:boxCornerRadiusBottomStart="12dp"
+                            app:boxCornerRadiusBottomEnd="12dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edit_search_places"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:textSize="14sp" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Toggle Categories Button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/button_toggle_categories"
+                            style="@style/Widget.MaterialComponents.Button.Icon"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            app:icon="@drawable/ic_expand_more_24"
+                            app:iconSize="24dp"
+                            android:contentDescription="Toggle categories" />
+
+                    </LinearLayout>
+
+                    <!-- Collapsible Quick Search Categories -->
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chip_group_categories"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:visibility="gone"
+                        app:singleLine="false"
+                        app:chipSpacingHorizontal="4dp"
+                        app:chipSpacingVertical="2dp">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_grocery"
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:text="🛒 Grocery"
+                            android:textSize="12sp"
+                            android:checkable="false"
+                            android:clickable="true" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_restaurant"
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:text="🍽️ Restaurant"
+                            android:textSize="12sp"
+                            android:checkable="false"
+                            android:clickable="true" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_gas_station"
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:text="⛽ Gas"
+                            android:textSize="12sp"
+                            android:checkable="false"
+                            android:clickable="true" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_pharmacy"
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:text="💊 Pharmacy"
+                            android:textSize="12sp"
+                            android:checkable="false"
+                            android:clickable="true" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_bank"
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="32dp"
+                            android:text="🏦 Bank"
+                            android:textSize="12sp"
+                            android:checkable="false"
+                            android:clickable="true" />
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Search Results Overlay - Positioned below search -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_search_results"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="100dp"
+                android:layout_gravity="top"
+                android:elevation="6dp"
+                android:visibility="gone"
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="@color/cardBackground">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_search_results"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxHeight="200dp"
+                    android:padding="8dp"
+                    android:nestedScrollingEnabled="true" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </FrameLayout>
+
+        <!-- Compact Control Panel -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/cardBackground"
-            android:elevation="8dp">
+            android:layout_weight="0"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/cardBackground">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -34,86 +196,99 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <!-- Header -->
+                <!-- Compact Header -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:text="Add New Location"
+                    android:layout_marginBottom="12dp"
+                    android:text="📍 New Location"
                     android:textColor="@color/textPrimary"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <!-- Location Name Input -->
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/text_input_location_name"
-                    style="@style/TextInputLayoutStyle"
+                <!-- Horizontal Layout for Name and Current Location -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:hint="Location name">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edit_location_name"
-                        android:layout_width="match_parent"
+                    <!-- Location Name Input -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_location_name"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:inputType="textCapSentences"
-                        android:maxLines="1"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:hint="Location name">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_location_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textCapSentences"
+                            android:maxLines="1"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="14sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Current Location Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/button_current_location"
+                        style="@style/Widget.MaterialComponents.Button.Icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="GPS"
+                        app:icon="@drawable/ic_my_location_24"
+                        app:iconSize="20dp"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <!-- Compact Radius Selection -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Radius:"
                         android:textColor="@color/textPrimary"
-                        android:textSize="16sp" />
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginEnd="12dp" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/radius_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:value="100"
+                        android:valueFrom="50"
+                        android:valueTo="1000"
+                        android:stepSize="50"
+                        app:thumbColor="@color/buttonPrimary"
+                        app:trackColorActive="@color/buttonPrimary"
+                        app:trackColorInactive="@color/textMuted" />
 
-                <!-- Radius Selection -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="Notification Radius"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/text_radius_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100m"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="12sp"
+                        android:layout_marginStart="8dp"
+                        android:minWidth="40dp" />
 
-                <com.google.android.material.slider.Slider
-                    android:id="@+id/radius_slider"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:value="100"
-                    android:valueFrom="50"
-                    android:valueTo="1000"
-                    android:stepSize="50"
-                    app:thumbColor="@color/buttonPrimary"
-                    app:trackColorActive="@color/buttonPrimary"
-                    app:trackColorInactive="@color/textMuted" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:text="50m - 1000m (Tap and drag to adjust)"
-                    android:textColor="@color/textMuted"
-                    android:textSize="12sp" />
-
-                <!-- Current Location Button -->
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/button_current_location"
-                    style="@style/ButtonSecondary"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="📍 Use Current Location"
-                    android:textSize="16sp" />
-
-                <!-- Instructions -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:text="📍 Tap on the map to select a location, or use your current location."
-                    android:textColor="@color/textMuted"
-                    android:textSize="14sp"
-                    android:gravity="center" />
+                </LinearLayout>
 
                 <!-- Action Buttons -->
                 <LinearLayout
@@ -123,30 +298,30 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button_cancel"
-                        style="@style/ButtonSecondary"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                         android:layout_width="0dp"
-                        android:layout_height="56dp"
+                        android:layout_height="48dp"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
                         android:text="Cancel"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button_save_location"
                         style="@style/ButtonPrimary"
                         android:layout_width="0dp"
-                        android:layout_height="56dp"
+                        android:layout_height="48dp"
                         android:layout_marginStart="8dp"
                         android:layout_weight="2"
                         android:text="Save Location"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
-        </androidx.core.widget.NestedScrollView>
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 

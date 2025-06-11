@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.softplanningapp.R
 import com.example.softplanningapp.SoftPlanningApplication
 import com.example.softplanningapp.ui.adapters.RecentNotesAdapter
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class HomeFragment : Fragment() {
 
@@ -26,9 +26,8 @@ class HomeFragment : Fragment() {
     private lateinit var recyclerRecentNotes: RecyclerView
     private lateinit var textEmptyState: TextView
     private lateinit var cardAddNote: MaterialCardView
-    private lateinit var cardViewNotes: MaterialCardView
-    private lateinit var cardLocations: MaterialCardView
-    private lateinit var fab: FloatingActionButton
+    private lateinit var cardAddLocation: MaterialCardView
+    private lateinit var buttonViewAllNotes: MaterialButton
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,9 +56,8 @@ class HomeFragment : Fragment() {
         recyclerRecentNotes = view.findViewById(R.id.recycler_recent_notes)
         textEmptyState = view.findViewById(R.id.text_no_notes)
         cardAddNote = view.findViewById(R.id.card_add_note)
-        cardViewNotes = view.findViewById(R.id.card_view_notes)
-        cardLocations = view.findViewById(R.id.card_locations)
-        fab = view.findViewById(R.id.fab_add_note)
+        cardAddLocation = view.findViewById(R.id.card_add_location)
+        buttonViewAllNotes = view.findViewById(R.id.button_view_all_notes)
     }
 
     private fun setupRecyclerView() {
@@ -96,20 +94,19 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
+        // Add Note Card
         cardAddNote.setOnClickListener {
             findNavController().navigate(R.id.action_home_to_addNote)
         }
 
-        cardViewNotes.setOnClickListener {
-            findNavController().navigate(R.id.action_home_to_notes)
+        // Add Location Card - NEW!
+        cardAddLocation.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_addLocation)
         }
 
-        // cardLocations.setOnClickListener {
-        //     findNavController().navigate(R.id.action_home_to_locations)
-        // }
-
-        fab.setOnClickListener {
-            findNavController().navigate(R.id.action_home_to_addNote)
+        // View All Notes Button
+        buttonViewAllNotes.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_notes)
         }
     }
 
