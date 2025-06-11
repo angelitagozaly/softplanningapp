@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Theme Colors -->
+    <color name="colorPrimary">#9acbd0</color>
+    <color name="colorPrimaryVariant">#7ba5ab</color>
+    <color name="colorOnPrimary">#ffffff</color>
+
+    <!-- Secondary Colors -->
+    <color name="colorSecondary">#a8c090</color>
+    <color name="colorSecondaryVariant">#8fa876</color>
+    <color name="colorOnSecondary">#ffffff</color>
+
+    <!-- Background Colors -->
+    <color name="windowBackground">#fafbfb</color>
+    <color name="colorBackground">#fafbfb</color>
+    <color name="colorOnBackground">#2c3e50</color>
+    <color name="colorSurface">#ffffff</color>
+    <color name="colorOnSurface">#2c3e50</color>
+
+    <!-- Status Bar -->
+    <color name="statusBarColor">#7ba5ab</color>
+
+    <!-- Card Colors -->
+    <color name="cardBackground">#ffffff</color>
+    <color name="cardBorder">#e8f0f1</color>
+    <color name="cardShadow">#1a7ba5ab</color>
+    <color name="cardElevated">#ffffff</color>
+
+    <!-- Button Colors -->
+    <color name="buttonPrimary">#9acbd0</color>
+    <color name="buttonPrimaryPressed">#7ba5ab</color>
+    <color name="buttonSecondary">#f0f4f5</color>
+    <color name="buttonSecondaryText">#5a7a80</color>
+    <color name="buttonAccent">#a8c090</color>
+    <color name="buttonDisabled">#bdc3c7</color>
+
+    <!-- Interactive States -->
+    <color name="rippleColor">#33b8dce1</color>
+    <color name="hoverColor">#b8dce1</color>
+    <color name="focusColor">#b8dce1</color>
+    <color name="pressedColor">#7ba5ab</color>
+    <color name="selectedColor">#e8f0f1</color>
+
+    <!-- Text Colors -->
+    <color name="textPrimary">#2c3e50</color>
+    <color name="textSecondary">#607d8b</color>
+    <color name="textMuted">#95a5a6</color>
+    <color name="textOnColored">#ffffff</color>
+    <color name="textHint">#bdc3c7</color>
+
+    <!-- Dividers & Borders -->
+    <color name="dividerLight">#e8f0f1</color>
+    <color name="dividerMedium">#cfd8dc</color>
+    <color name="borderLight">#e8f0f1</color>
+    <color name="borderMedium">#cfd8dc</color>
+
+    <!-- Status Colors -->
+    <color name="colorSuccess">#81c784</color>
+    <color name="colorWarning">#ffb74d</color>
+    <color name="colorError">#e57373</color>
+    <color name="colorInfo">#64b5f6</color>
+
+    <!-- Accent & Highlight -->
+    <color name="accentTerracotta">#d4a574</color>
+    <color name="highlightColor">#33b8dce1</color>
+
+    <!-- FAB (Floating Action Button) -->
+    <color name="fabBackground">#9acbd0</color>
+    <color name="fabIcon">#ffffff</color>
+
+    <!-- Input Fields -->
+    <color name="inputBackground">#ffffff</color>
+    <color name="inputBorder">#e8f0f1</color>
+    <color name="inputFocused">#9acbd0</color>
+    <color name="inputError">#e57373</color>
+
+    <!-- Navigation -->
+    <color name="navBackground">#ffffff</color>
+    <color name="navSelected">#e8f0f1</color>
+    <color name="navIcon">#607d8b</color>
+    <color name="navIconSelected">#9acbd0</color>
+
+    <!-- Common Android Colors -->
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- Error colors for delete button -->
+    <color name="colorErrorDark">#D32F2F</color>
+
+    <!-- Icon tint colors -->
+    <color name="iconTint">#757575</color>
+    <color name="iconTintLight">#9E9E9E</color>
+
+    <!-- Additional button colors if needed -->
+    <color name="buttonTextWhite">#FFFFFF</color>
+    <color name="buttonBackgroundError">#F44336</color>
+</resources>

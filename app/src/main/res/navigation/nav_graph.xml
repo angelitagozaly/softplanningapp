@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.softplanningapp.ui.home.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_home_to_addNote"
+            app:destination="@id/addNoteFragment" />
+
+        <action
+            android:id="@+id/action_home_to_editNote"
+            app:destination="@id/editNoteFragment" />
+
+        <action
+            android:id="@+id/action_home_to_notes"
+            app:destination="@id/notesFragment" />
+
+        <action
+            android:id="@+id/action_home_to_locations"
+            app:destination="@id/locationsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="com.example.softplanningapp.ui.addnote.AddNoteFragment"
+        android:label="@string/add_note"
+        tools:layout="@layout/fragment_add_note">
+
+        <action
+            android:id="@+id/action_addNote_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/notesFragment"
+        android:name="com.example.softplanningapp.ui.notes.NotesFragment"
+        android:label="@string/my_notes"
+        tools:layout="@layout/fragment_notes">
+
+        <action
+            android:id="@+id/action_notes_to_addNote"
+            app:destination="@id/addNoteFragment" />
+
+        <action
+            android:id="@+id/action_notes_to_editNote"
+            app:destination="@id/editNoteFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/locationsFragment"
+        android:name="com.example.softplanningapp.ui.locations.LocationsFragment"
+        android:label="@string/locations"
+        tools:layout="@layout/fragment_locations">
+
+        <action
+            android:id="@+id/action_locations_to_addLocation"
+            app:destination="@id/addLocationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addLocationFragment"
+        android:name="com.example.softplanningapp.ui.addlocation.AddLocationFragment"
+        android:label="@string/add_location"
+        tools:layout="@layout/fragment_add_location">
+
+        <action
+            android:id="@+id/action_addLocation_to_locations"
+            app:destination="@id/locationsFragment"
+            app:popUpTo="@id/locationsFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editNoteFragment"
+        android:name="com.example.softplanningapp.ui.notes.EditNoteFragment"
+        android:label="Edit Note"
+        tools:layout="@layout/fragment_edit_note">
+
+        <argument
+            android:name="noteId"
+            app:argType="long" />
+
+        <action
+            android:id="@+id/action_editNote_to_notes"
+            app:destination="@id/notesFragment"
+            app:popUpTo="@id/notesFragment"
+            app:popUpToInclusive="false" />
+
+        <action
+            android:id="@+id/action_editNote_to_home"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false" />
+
+    </fragment>
+
+</navigation>
